@@ -1,3 +1,6 @@
 const url = window.location.href;
 console.log("Current tab URL: " + url);
-// URL에 대한 추가적인 처리
+
+if (url.includes("https://www.google.com/search?q=hi")) {
+    chrome.runtime.sendMessage({ action: "openPopup" });
+}

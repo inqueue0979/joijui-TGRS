@@ -1,6 +1,10 @@
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (changeInfo.url && tab.active) {
-        console.log("Updated tab URL: " + changeInfo.url);
-        // URL에 대한 추가적인 처리
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+    if (message.action === "openPopup") {
+        chrome.windows.create({
+            url: "popup/warning.html",
+            type: "popup",
+            width: 400,
+            height: 300
+        });
     }
 });
