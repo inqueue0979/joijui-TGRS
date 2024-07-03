@@ -3,14 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>사기 의심 사이트</title>
+  <title>사기경고 팝업</title>
+  <link href="../bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html {
+      margin: 0;
+      padding: 0;
+      height: 800px;
+      width: 200px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .popup-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .popup {
+      background-color: #333;
+      color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      width: 400px;
+    }
+    .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .popup-header span {
+      color: red;
+      font-weight: bold;
+    }
+    .popup-body {
+      margin-top: 20px;
+    }
+    .popup-body .alert-icon {
+      font-size: 50px;
+      color: red;
+    }
+    .popup-footer {
+      margin-top: 20px;
+    }
+    .popup-footer a {
+      margin: 10px 0;
+      display: block;
+    }
+
+    @font-face {
+      font-family: 'SUITE';
+      src: url('../SUITE-woff2/SUITE-Regular.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'SUITE-Extrabold';
+      src: url('../SUITE-woff2/SUITE-ExtraBold.woff2') format('woff2');
+    }
+
+    body {
+      font-family: 'SUITE', sans-serif;
+    }
+
+  </style>
 </head>
 <body>
-  <h1>사기 의심 사이트 조회 확인</h1>
-  <div>
-    <p>현재의 사이트/상품은 사기 의심 신고 결과가 있습니다.</p>
-    <button id="close">이 사이트/상품 무시</button>
-    <button id="close">닫기</button>
-  </div>
+    <div class="popup">
+      <div class="popup-header">
+        <div>딱걸렸어 <span style="font-family: 'SUITE-ExtraBold';">경고 팝업</span></div>
+      </div>
+      <div class="popup-body">
+        <div class="alert-icon">⚠️</div>
+        <p>현재 접속하신 사이트 / 품목은<br><span style="color: red; font-family: 'SUITE-ExtraBold';">사기 신고</span>가 접수된 사이트 / 품목입니다.</p>
+        <p>신고 유형: <span style="color: orange;">사용자 신고</span><br>
+           신고 내역: <span style="color: yellow;">물품 사기</span></p>
+      </div>
+      <div class="popup-footer">
+        <a href="#" class="btn btn-primary">안전한 페이지로 돌아가기</a>
+        <a href="#" style="color: red;">이 링크 신뢰 후 계속 진행하기 (권장하지 않음)</a>
+      </div>
+    </div>
 </body>
 </html>
