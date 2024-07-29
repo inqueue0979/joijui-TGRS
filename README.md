@@ -72,13 +72,13 @@
 <img src= "https://github.com/user-attachments/assets/4e82f269-45dc-4fc6-ac95-248a4a54c0e8" width="600" height="300"/>
   <br>
   <br>
-  <strong><서비스 개발 및 협업 계획></strong>
+  <strong><연간 액션플랜></strong>
   <br>
   <br>
 <img src= "https://github.com/user-attachments/assets/9e9f6b90-b785-43e5-895e-80602b83d772" width="800" height="300"/>
   <br>
   <br>
-  <strong><연간 액션플랜></strong>
+  <strong><서비스 개발 계획></strong>
   <br>
 </div>
 
