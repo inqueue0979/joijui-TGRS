@@ -35,12 +35,27 @@ Currently, two official plugins are available:
     <td>코로나 19를 기점으로 사이버 범죄 증가 추세</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>
+      <img src= "https://github.com/user-attachments/assets/4862cea1-aefd-4bbd-9466-8558b48c2379" width="150" height="150"/>
+      <img src= "https://github.com/user-attachments/assets/c8e6cfc9-623b-4305-bf49-247bf1a06c94" width="150" height="150"/>
+    </td>
+    <td>
+      <img src= "https://github.com/user-attachments/assets/89d7b0e7-82e4-473b-9d6a-7176df43ccff" width="170" height="150"/>
+      <img src= "https://github.com/user-attachments/assets/d347a580-c733-4e75-abc3-3da19898bb5a" width="150" height="150"/>
+    </td>
   </tr>
 </table>
+  <br>
 <strong>전자상거래 확산 및 사기 증가</strong>
 <br>
 그에 비해 <strong>소비자 불편이 큰 예방책</strong> 및 <strong>직접적인 후처리 신고 절차</strong> 위주의 대응책
 </div>
 <br>
+
+# 서비스 주요 기능
+
+# 서비스 기능 상세
+
+# 서비스 계획
+
+# 팀원 정보
