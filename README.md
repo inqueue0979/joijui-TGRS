@@ -83,7 +83,14 @@
 </div>
 
 # 팀원 정보
-
+<div align="center">
+<table>
+  <td align="center"><a href="https://github.com/inqueue0979"><img src="" width="100px;" alt=""/><br/><sub><b>조원재</b></sub></a><br/><a href="https://github.com/inqueue0979" title="Code">💻</a></td>
+  <td align="center"><a href="https://github.com/jhj04"><img src="https://github.com/jhj04/2023-2_study_flutting_masters/assets/129846546/0dcb2d38-8530-45c8-99e5-c6f39aad0c9c" width="100px;" alt=""/><br /><sub><b>정현주</b></sub></a><br /><a href="https://github.com/jhj04" title="Code">🌉</a></td>
+  <td align="center"><a href="https://github.com/jooya38"><img src="https://github.com/jhj04/2023-2_study_flutting_masters/assets/129846546/83f31e01-77ad-42fc-bb4d-eadf7730a053" width="100px;" alt=""/><br /><sub><b>황연주</b></sub></a><br /><a href="https://github.com/jooya38" title="Code">🐿️</a></td>
+  <td align="center"><a href="https://github.com/"><img src="" width="100px;" alt=""/><br/><sub><b>조현우</b></sub></a><br /><a href="https://github.com/" title="Code">🕶️</a></td>
+</table>
+</div>
 
 
 
