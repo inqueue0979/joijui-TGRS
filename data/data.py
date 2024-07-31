@@ -7,6 +7,7 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException,
 import csv
 import time
 import re
+import sqlite3
 
 # 드라이버 설정 및 웹 페이지 로드
 service = Service(r'C:\Users\hwooo\.wdm\drivers\chromedriver\win64\126.0.6478.182\chromedriver-win32\chromedriver.exe')
@@ -70,3 +71,20 @@ finally:
 
     driver.quit()
     print("Data has been written to CSV.")
+
+    # SQLite 데이터베이스 연결
+    conn = sqlite3.connect('site.db')
+    c = conn.cursor()
+
+    # 크롤링한 데이터 DB에 삽입
+    for result in results:
+        c.execute('''
+            INSERT INTO sites (link, review, site_id)
+            VALUES (?, ?, ?)
+        ''', result)  #크롤링 된 리뷰, 크롤링된 ID
+
+    # 변경사항 저장 및 데이터베이스 연결 종료
+    conn.commit()
+    conn.close()
+
+    print("Data has been inserted into the database.")
