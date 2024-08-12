@@ -1,10 +1,21 @@
 const url = window.location.href;
 console.log("Current tab URL: " + url);
 
-if (url.includes("aliexpress.com/item")) {
-    chrome.runtime.sendMessage({ action: "openPopup" });
-    createPopup();
+function checkUrlWithServer(url) {
+    return fetch(`https://api.jowonjae.kro.kr/sites?url=${encodeURIComponent(url)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === true) {  // 서버에서 true 응답을 받으면
+                chrome.runtime.sendMessage({ action: "openPopup" });
+                createPopup();
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
 }
+
+checkUrlWithServer(url);
 
 function createPopup() {
     // Tailwind CSS 로드
