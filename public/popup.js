@@ -1,6 +1,31 @@
+// popup.js
+document.addEventListener('DOMContentLoaded', function() {
+    const switchInput = document.getElementById('switch');
+    const lighthouse = document.getElementById('lighthouse');
+    const toggleOptions = document.querySelectorAll('.toggle-option');
+    const toggleIndicator = document.querySelector('.toggle-indicator');
+    
+    // 초기 상태 설정
+    if (switchInput.checked) {
+        lighthouse.src = 'images/lighthouse_on.png';
+    } else {
+        lighthouse.src = 'images/lighthouse_off.png';
+    }
+
+    // 스위치 상태 변경에 따라 이미지 전환
+    switchInput.addEventListener('change', function() {
+        if (switchInput.checked) {
+            lighthouse.src = 'images/lighthouse_on.png';
+            lighthouse.style.opacity = 1;
+        } else {
+            lighthouse.src = 'images/lighthouse_off.png';
+            lighthouse.style.opacity = 0.5;
+        }
+    });
+});
+
 document.getElementById('submitBtn').addEventListener('click', function() {
     const link = document.getElementById('link').value;
-    const from_column = document.getElementById('from_column').value;
     const reason = document.getElementById('reason').value;
     const resultMessage = document.getElementById('resultMessage');
 
@@ -11,7 +36,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         frequency: 1
     };
 
-    fetch('http://inqueue0979.iptime.org:25570/sites', {
+    fetch('https://api.jowonjae.kro.kr/sites', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

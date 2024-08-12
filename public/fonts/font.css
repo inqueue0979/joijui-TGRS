@@ -33,3 +33,8 @@
 	font-weight: 900;
 	src: url('./SUITE-Heavy.woff2') format('woff2');
 }
+@font-face {
+	font-family: 'SanTokki';
+	font-weight: 500;
+	src: url('./HSSanTokki2.0.ttf') format('truetype');
+}

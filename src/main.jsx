@@ -6,7 +6,6 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <h1>딱걸렸어</h1>
         <Popup />
     </React.StrictMode>
 );

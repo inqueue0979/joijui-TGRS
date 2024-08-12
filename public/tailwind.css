@@ -893,16 +893,26 @@ video {
 @font-face {
   font-family: 'SUITE';
 
-  src: url('SUITE-woff2/SUITE-Regular.woff2') format('woff2');
+  src: url('fonts/SUITE-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'SUITE-Extrabold';
 
-  src: url('SUITE-woff2/SUITE-ExtraBold.woff2') format('woff2');
+  src: url('fonts/SUITE-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SanTokki';
+
+  src: url('fonts/HSSanTokki2.0.ttf') format('trueType');
 }
 
 #custom-popup {
+  font-family: 'SUITE', sans-serif;
+}
+
+.SanTokki {
   font-family: 'SUITE', sans-serif;
 }
 

@@ -6,8 +6,8 @@ function checkUrlWithServer(url) {
         .then(response => response.json())
         .then(data => {
             if (data.result === true) {  // 서버에서 true 응답을 받으면
-                chrome.runtime.sendMessage({ action: "openPopup" });
-                createPopup();
+                chrome.runtime.sendMessage({ action: "openPopup", data });
+                createPopup(data);
             }
         })
         .catch(error => {
@@ -17,86 +17,42 @@ function checkUrlWithServer(url) {
 
 checkUrlWithServer(url);
 
-function createPopup() {
-    // Tailwind CSS 로드
+function createPopup(data) {
     const style = document.createElement('link');
     style.rel = 'stylesheet';
     style.href = chrome.runtime.getURL('tailwind.css');
     document.head.appendChild(style);
 
-    // 팝업을 감싸는 div 생성
     const popup = document.createElement('div');
     popup.id = 'custom-popup';
-    popup.innerHTML = `
-      <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <!--
-            Background backdrop, show/hide based on modal state.
 
-            Entering: "ease-out duration-300"
-            From: "opacity-0"
-            To: "opacity-100"
-            Leaving: "ease-in duration-200"
-            From: "opacity-100"
-            To: "opacity-0"
-        -->
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+    fetch(chrome.runtime.getURL('warning.html'))
+        .then(response => response.text())
+        .then(htmlContent => {
+            popup.innerHTML = htmlContent;
+            document.body.appendChild(popup);
 
-        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <!--
-                Modal panel, show/hide based on modal state.
+            // 받은 데이터를 삽입
+            document.getElementById('from').textContent = data.from;
+            document.getElementById('reason').textContent = data.reason;
+            document.getElementById('frequency').textContent = data.frequency;
 
-                Entering: "ease-out duration-300"
-                From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                To: "opacity-100 translate-y-0 sm:scale-100"
-                Leaving: "ease-in duration-200"
-                From: "opacity-100 translate-y-0 sm:scale-100"
-                To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            -->
-            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                <div class="sm:flex sm:items-start">
-                    <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                    <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                    </svg>
-                    </div>
-                    <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                    <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">딱걸렸어 사기 경고</h3>
-                    <div class="mt-2">
-                        <p class="text-sm text-gray-500">위 사이트는 신고 / AI의 판독에 의하여 사기 의심 레이더망에 걸렸습니다.</p>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                <button type="button" id="deactivate" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">무시 후 계속 진행하기</button>
-                <button type="button" id="cancel" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">안전한 페이지로 돌아가기</button>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
+            // 닫기 버튼 이벤트 리스너 추가
+            document.querySelector('.btn-primary').addEventListener('click', () => {
+                document.body.removeChild(popup);
+            });
 
-    `;
-
-    // 팝업을 body에 추가
-    document.body.appendChild(popup);
-
-    // 닫기 버튼 이벤트 리스너 추가
-    document.getElementById('cancel').addEventListener('click', () => {
-        document.body.removeChild(popup);
-      });
-  
-    // 닫기 버튼 이벤트 리스너 추가
-    document.getElementById('deactivate').addEventListener('click', () => {
-    document.body.removeChild(popup);
-    });
+            // 무시 후 계속 진행하기 버튼 이벤트 리스너 추가
+            document.querySelector('.btn-secondary').addEventListener('click', () => {
+                document.body.removeChild(popup);
+            });
+        })
+        .catch(error => console.error('Error loading warning.html:', error));
 }
 
 // 메시지를 받아 팝업을 생성
 chrome.runtime.onMessage.addListener((message, sender) => {
     if (message.action === 'showPopup') {
-        createPopup();
+        createPopup(message.data);
     }
 });
