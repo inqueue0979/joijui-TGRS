@@ -2,7 +2,7 @@ const url = window.location.href;
 console.log("Current tab URL: " + url);
 
 function checkUrlWithServer(url) {
-    return fetch(`https://api.jowonjae.kro.kr/sites?url=${encodeURIComponent(url)}`)
+    return fetch(`https://api.jowonjae.kro.kr/joijui/sites?url=${encodeURIComponent(url)}`)
         .then(response => response.json())
         .then(data => {
             if (data.result === true) {  // 서버에서 true 응답을 받으면
