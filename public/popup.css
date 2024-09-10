@@ -1,6 +1,6 @@
 /* popup.css */
 body {
-  background-color: #131313;
+  background-color: rgba(51, 104, 189, 1);
   color: white;
   width: 300px;
   height: auto;
@@ -91,9 +91,9 @@ body {
   src: url('fonts/SUITE-Bold.ttf') format('woff2');
 }
 
-.SanTokki {
+/* .SanTokki {
   font-family: 'SanTokki', sans-serif;
-}
+} */
 
 .SUITE {
   font-family: 'SUITE', sans-serif;
@@ -107,10 +107,25 @@ body {
   margin-bottom: 20px;
 }
 
+#resultMessage {
+  position: relative;
+  width: 200px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  color: rgba(51, 104, 189, 1);
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .toggle-button {
   position: relative;
   width: 200px;
-  background-color: #333;
+  background-color: rgba(103, 103, 103, 0.5);
   border-radius: 30px;
   overflow: hidden;
   display: flex;
@@ -143,7 +158,7 @@ body {
 }
 
 .toggle-button a.active {
-  color: white; /* 활성화된 링크의 텍스트 색상 */
+  color:rgba(110, 110, 110, 1); /* 활성화된 링크의 텍스트 색상 */
 }
 
 /* 각 위치로 이동하는 CSS 설정 */
