@@ -2,10 +2,10 @@ const url = window.location.href;
 console.log("Current tab URL: " + url);
 
 function checkUrlWithServer(url) {
-    return fetch(`https://api.jowonjae.kro.kr/joijui/sites?url=${encodeURIComponent(url)}`)
+    return fetch(`https://tgrs.api-jowonjae.kro.kr/check_url?url=${encodeURIComponent(url)}`)
         .then(response => response.json())
         .then(data => {
-            if (data.result === true) {  // 서버에서 true 응답을 받으면
+            if (data.is_fraud === true) {  // 서버에서 true 응답을 받으면
                 chrome.runtime.sendMessage({ action: "openPopup", data });
                 createPopup(data);
             }
@@ -33,9 +33,8 @@ function createPopup(data) {
             document.body.appendChild(popup);
 
             // 받은 데이터를 삽입
-            document.getElementById('from').textContent = data.from;
-            document.getElementById('reason').textContent = data.reason;
-            document.getElementById('frequency').textContent = data.frequency;
+            document.getElementById('from').textContent = data.reporter;
+            document.getElementById('reason').textContent = data.fraud_type;
 
             // 닫기 버튼 이벤트 리스너 추가
             document.querySelector('.btn-primary').addEventListener('click', () => {
